@@ -1,0 +1,12 @@
+.pro{
+  display: grid ;
+  grid-template-columns: repeat(4,1fr);
+  gap: 50px;
+
+}
+.card{
+  width: 100%;
+}
+.row{
+  gap: 20px;
+}
