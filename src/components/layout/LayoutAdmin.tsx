@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom'
-import HeaderAdmin from '../Admin/HeaderAdmin'
+import HeaderAdmin from '../Admin/header/HeaderAdmin'
 import FooterAdmin from '../Admin/FooterAdmin'
 
 

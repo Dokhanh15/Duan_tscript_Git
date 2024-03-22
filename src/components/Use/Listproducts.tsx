@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react'
 import '../css/products-list.css'
+import { Link } from 'react-router-dom';
+import instance from '~/apis';
+import { TProduct } from '../interfaces/products';
 
 // type Props = {}
 
 const Listproducts = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<TProduct[]>([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/products'); // Đường dẫn tới tệp JSON
-        const data = await response.json();
+        const { data } = await instance.get(`/products`);
         setProducts(data);
         console.log(data)
       } catch (error) {
@@ -25,12 +27,12 @@ const Listproducts = () => {
     <div className=' text-center '>
       <h1 className='mt-5 mb-5 '>DANH SÁCH SẢN PHẨM</h1>
       <main className="pro ">
-        {products.map((product: any) => (
+        {products.map((product) => (
           <div className="row">
             <div className="card ">
-              <a href="">
+              <Link to={`/shop/${product.id}`}>
                 <img height={200} src={product.images} className="card-img-top" alt="..." />
-              </a>
+              </Link>
               <div className="card-body">
                 <h5 className="card-title product__title">
                   {product.title}

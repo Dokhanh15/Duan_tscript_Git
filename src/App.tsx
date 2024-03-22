@@ -11,6 +11,7 @@ import Home from './components/Use/Home';
 import LayoutAdmin from './components/layout/LayoutAdmin';
 import HomeAdmin from './components/Admin/HomeAdmin';
 import ProductsAdmin from './components/Admin/Products';
+import ProductsDetail from './components/Use/ProductsDetail';
 
 
 const App: React.FC = () => {
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         <Route path="/" element={<LayoutWebsite />} >
           <Route index element={<Home />} />
           <Route path="shop" element={<Shop />} />
+          <Route path="shop/:id" element={<ProductsDetail />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="*" element={<Notfound />} />
