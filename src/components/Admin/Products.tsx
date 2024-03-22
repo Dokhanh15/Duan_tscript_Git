@@ -30,8 +30,8 @@ const ProductsAdmin = () => {
       <a href="#" className='btn btn-primary mb-3'>Thêm sản phẩm</a>
       <div className="row ">
         <table className=' table-bordered'>
-          <thead className='text-center  '>
-            <tr>
+          <thead className='text-center '>
+            <tr >
               <th>ảnh</th>
               <th>tên</th>
               <th>mô tả</th>
@@ -45,7 +45,7 @@ const ProductsAdmin = () => {
               <td>chức năng</td> 
             </tr> 
           </thead>
-          <tbody>
+          <tbody className='text-center border-1'>
             {products.map((product: any) => (
               <tr>
                 <td className='col-2 '><img className='p-2' width={150} src={product.images} alt="" /></td>
@@ -58,7 +58,7 @@ const ProductsAdmin = () => {
                 <td className='col-2'>{product.brand}</td>
                 <td className='col-2 p-1 '>{product.category}</td>
                 <td className='col-2 p-2'><img width={150} src={product.thumbnail } alt="" /></td>
-                <td className='d-flex p-2 gap-2  '>
+                <td className='d-flex p-2 gap-2 mt-3   '>
                   <NavLink className='btn btn-primary' to='#'>UPDATE</NavLink>
                   <NavLink className='btn btn-danger ' to='#'>DELETE</NavLink>
                 </td>

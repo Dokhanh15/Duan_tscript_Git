@@ -22,8 +22,8 @@ const Listproducts = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className='mt-5 mb-3 '>DANH SÁCH SẢN PHẨM</h1>
+    <div className=' text-center '>
+      <h1 className='mt-5 mb-5 '>DANH SÁCH SẢN PHẨM</h1>
       <main className="pro ">
         {products.map((product: any) => (
           <div className="row">

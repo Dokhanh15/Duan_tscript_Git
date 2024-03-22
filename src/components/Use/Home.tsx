@@ -3,7 +3,9 @@
 
 const Home = () => {
   return (
-    <div>home</div>
+    <div>
+      <h1 className="text-center mt-5">CHÀO MỪNG BẠN ĐẾN VỚI WEBSITE</h1>
+    </div>
   )
 }
 

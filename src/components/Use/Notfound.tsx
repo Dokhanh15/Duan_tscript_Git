@@ -1,9 +1,9 @@
 
-// type Props = {}
-
 const Notfound = () => {
   return (
-    <div>Notfound</div>
+    <div>
+      <h3 className="text-danger text-center ">Notfound</h3>
+    </div>
   )
 }
 

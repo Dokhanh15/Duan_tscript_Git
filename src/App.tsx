@@ -30,7 +30,6 @@ const App: React.FC = () => {
         <Route path="/admin" element={<LayoutAdmin />} >
           <Route index element={<HomeAdmin />} />
           <Route path="products" element={<ProductsAdmin />} />
-          <Route path="*" element={<Notfound />} />
         </Route>
 
       </Routes>
