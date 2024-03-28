@@ -1,34 +1,19 @@
-import { useEffect, useState } from 'react'
-import '../css/products-list.css'
+import '../css/css.css'
 import { Link } from 'react-router-dom';
-import instance from '~/apis';
-import { TProduct } from '../interfaces/products';
+import { TProduct } from '../interfaces/Products';
 
-// type Props = {}
+type Props = {
+	products: TProduct[];
+};    
 
-const Listproducts = () => {
-  const [products, setProducts] = useState<TProduct[]>([]);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const { data } = await instance.get(`/products`);
-        setProducts(data);
-        console.log(data)
-      } catch (error) {
-        console.error('Lỗi khi tải danh sách sản phẩm:', error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
+const Listproducts: React.FC<Props> = ({ products })=> {  
+    
   return (
     <div className=' text-center '>
       <h1 className='mt-5 mb-5 '>DANH SÁCH SẢN PHẨM</h1>
       <main className="pro ">
         {products.map((product) => (
-          <div className="row">
+          <div key={product.id} className="row">
             <div className="card ">
               <Link to={`/shop/${product.id}`}>
                 <img height={200} src={product.images} className="card-img-top" alt="..." />
