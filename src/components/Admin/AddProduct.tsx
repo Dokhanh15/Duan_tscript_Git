@@ -1,25 +1,49 @@
-import { SubmitHandler, useForm } from 'react-hook-form';
-import Joi from 'joi';
 import { joiResolver } from '@hookform/resolvers/joi';
-import { useNavigate } from 'react-router-dom';
+import Joi from 'joi';
+import { useForm } from 'react-hook-form';
 import { TProduct } from '../interfaces/Products';
-import { createProduct } from '~/apis/Product';
 
 
 const productSchema = Joi.object({
-  title: Joi.string().required().min(3).max(255),
-  price: Joi.number().required().min(0),
-  description: Joi.string().required().min(3),
-  images: Joi.number().required(),
-  discountPercentage: Joi.string().required().min(0),
-  thumbnail: Joi.number().required(),
-  stock: Joi.string().required().min(0),
-  brand: Joi.number().required().min(3).max(255),
-  category: Joi.number().required().min(0),
+  title: Joi.string().required().min(3).max(255).messages({
+    'string.empty': 'Title không được để trống',
+    'string.min': 'Title phải có độ dài tối thiểu là {#limit} ký tự',
+    'string.max': 'Title phải có độ dài tối đa là {#limit} ký tự',
+  }),
+  price: Joi.number().required().min(0).messages({
+    'any.required': 'Price không được để trống',
+    'number.base': 'Price phải là một số',
+    'number.min': 'Price phải có giá trị tối thiểu là {#limit}',
+  }),
+  description: Joi.string().allow(''),
+  images: Joi.string().allow(''),
+  thumbnail: Joi.string().allow(''),
+
+  discountPercentage: Joi.number().required().min(0).messages({
+    'number.base': 'DiscountPercentage phải là một số',
+    'number.empty': 'DiscountPercentage không được để trống',
+    'number.min': 'DiscountPercentage phải có giá trị tối thiểu là {#limit}',
+  }),
+  stock: Joi.number().required().min(0).messages({
+    'number.base': 'Stock phải là một số',
+    'number.empty': 'Stock không được để trống',
+    'number.min': 'Stock phải có giá trị tối thiểu là {#limit}',
+  }),
+  brand: Joi.string().required().min(3).max(255).messages({
+    'string.empty': 'Brand không được để trống',
+    'string.min': 'Brand phải có độ dài tối thiểu là {#limit} ký tự',
+    'string.max': 'Brand phải có độ dài tối đa là {#limit} ký tự',
+  }),
+  category: Joi.string().required().min(0).messages({
+    'string.empty': 'Category không được để trống',
+    'string.min': 'Category phải có độ dài tối thiểu là {#limit} ký tự',
+  }),
 });
 
-const AddProduct = () => {
-  const navigate = useNavigate();
+type Props = {
+	onAdd: (product: TProduct) => void;
+};
+const AddProduct = ({onAdd}: Props) => {
   const {
     register,
     handleSubmit,
@@ -28,76 +52,71 @@ const AddProduct = () => {
     resolver: joiResolver(productSchema),
   });
 
-  const onSubmit: SubmitHandler<TProduct> = (product) => {
-    (async () => {
-      await createProduct(product);
-      navigate('/admin/products');
-    })();
+  const onSubmit = (product: TProduct) => {
+    onAdd(product);
   };
 
   return (
     <div>
       <main className="p-5 ">
         <h2 className="text-center">THÊM SẢN PHẨM</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} >
           <div className="form-group">
             <label htmlFor="name">Tên sản phẩm:</label>
-            <input type="text" className="form-control"  {...register('title')}/>
-            {errors.title && <p className='text-danger'>{errors.title.message = "không được để trống"} </p>}
+            <input type="text" className="form-control"  {...register('title',{required :true})} />
+            {errors.title && <p className='text-danger'>{errors.title.message} </p>}
 
           </div>
           <div className="form-group">
             <label htmlFor="sortDescriptions">Mô tả:</label>
-            <input type="text" className="form-control" {...register('description')} />
-            {errors.description && <p className='text-danger'>{errors.description.message = "không được để trống"}</p>}
+            <textarea className="form-control" {...register('description')} ></textarea>
 
           </div>
           <div className="form-group">
-            <label htmlFor="productImage">Ảnh:</label><br />
-            <input type="file" className="form-control-file mt-3 mb-3 " {...register('images')} />
-            {errors.images && <p className='text-danger'>{errors.images.message = "không được để trống"}</p>}
+            <label htmlFor="productImage">Ảnh:</label>
+            <input type="text" className="form-control mt-3 mb-3 " {...register('images')} /> 
 
           </div>
           <div className="form-group">
             <label htmlFor="descriptions">Giá:</label>
-            <input type="number" className="form-control" {...register('price')} />
-            {errors.price && <p className='text-danger'>{errors.price.message = "không được để trống"}</p>}
+            <input type="number" className="form-control" {...register('price',{required:true})} />
+            {errors.price && <p className='text-danger'>{errors.price.message}</p>}
 
           </div>
           <div className="form-group">
             <label htmlFor="price">Giảm giá:</label>
             <input type="number" className="form-control" {...register('discountPercentage')} />
-            {errors.discountPercentage && <p className='text-danger'>{errors.discountPercentage.message = "không được để trống"}</p>}
+            {errors.discountPercentage && <p className='text-danger'>{errors.discountPercentage.message }</p>}
 
           </div>
           <div className="form-group">
             <label htmlFor="author">Ảnh nhỏ:</label><br /><br />
-            <input type="file" className="form-control-file" {...register('thumbnail')} />
-            {errors.thumbnail && <p className='text-danger'>{errors.thumbnail.message = "không được để trống"}</p>}
+            <input type="text" className="form-control" {...register('thumbnail')} />
 
           </div><br />
           <div className="form-group">
             <label htmlFor="date">Số lượng:</label>
-            <input type="number" className="form-control" {...register('stock')}/>
-            {errors.stock && <p className='text-danger'>{errors.stock.message = "không được để trống"}</p>}
+            <input type="number" className="form-control" {...register('stock')} />
+            {errors.stock && <p className='text-danger'>{errors.stock.message }</p>}
 
           </div>
           <div className="form-group">
             <label htmlFor="author">Thương hiệu:</label>
             <input type="text" className="form-control" {...register('brand')} />
-            {errors.brand && <p className='text-danger'>{errors.brand.message = "không được để trống"}</p>}
+            {errors.brand && <p className='text-danger'>{errors.brand.message }</p>}
 
           </div>
           <div className="form-group">
             <label htmlFor="author">Danh mục:</label>
-            <input type="number" className="form-control" {...register('category')}/>
-            {errors.category && <p className='text-danger'>{errors.category.message = "không được để trống"}</p>}
+            <input type="text" className="form-control" {...register('category')} />
+            {errors.category && <p className='text-danger'>{errors.category.message }</p>}
 
           </div>
-          
-          <button type="submit" className="btn btn-primary my-4 ">Add Product</button>
+
+          <button type="submit" className="btn btn-primary my-4 ">Submit</button>
         </form>
       </main>
+
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"
 import instance from "~/apis";
 import { TProduct } from "../interfaces/Products";
+import "../css/css.css"
 
 const ProductsDetail = () => {
   const params = useParams();
@@ -17,9 +18,9 @@ const ProductsDetail = () => {
   return (
     <div>
       <div className="row">
-        <div className=" d-flex gap-5 border p-5 bg-secondary-subtle  ">
+        <div className="box d-flex gap-5 border p-5 ">
           <div>
-            <img width={600} src={product?.thumbnail} alt="..." />
+            <img width={500} src={product?.thumbnail} alt="..." />
           </div>
 
           <div >

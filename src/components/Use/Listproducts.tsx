@@ -6,7 +6,7 @@ type Props = {
 	products: TProduct[];
 };    
 
-const Listproducts: React.FC<Props> = ({ products })=> {  
+const Listproducts= ({ products }: Props) => {  
     
   return (
     <div className=' text-center '>
@@ -16,9 +16,9 @@ const Listproducts: React.FC<Props> = ({ products })=> {
           <div key={product.id} className="row">
             <div className="card ">
               <Link to={`/shop/${product.id}`}>
-                <img height={200} src={product.images} className="card-img-top" alt="..." />
+                <img height={200} src={product.images} className="card-img-top" alt={product.title} />
               </Link>
-              <div className="card-body">
+              <div className="card-body ">
                 <h5 className="card-title product__title">
                   {product.title}
                 </h5>

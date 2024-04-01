@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import HeaderPage from '../Use/HeaderPage'
-import FooterPage from '../Use/FooterPage'
-import Navs from '../Use/Navs'
+import HeaderPage from '../Use/container/HeaderPage'
+import FooterPage from '../Use/container/FooterPage'
+import Navs from '../Use/container/Navs'
 
 
 
