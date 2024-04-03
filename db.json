@@ -1,28 +1,25 @@
 {
   "products": [
     {
-      "id": "2",
       "title": "iPhone X",
       "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
-      "price": 899,
-      "discountPercentage": 17.94,
-      "rating": 4.44,
+      "images": "https://cdn.dummyjson.com/product-images/2/1.jpg",
+      "price": 898,
+      "discountPercentage": 95.94,
+      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
       "stock": 34,
       "brand": "Apple",
       "category": "smartphones",
-      "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/2/1.jpg"
-      ]
+      "id": "2"
     },
     {
-      "title": "Samsung Universe 9",
+      "title": "Samsung Universe 99",
       "description": "Samsung's new variant which goes beyond Galaxy to the Universer",
       "images": "https://picsum.photos/200/200",
-      "price": 1249,
-      "discountPercentage": 14.46,
+      "price": 1248,
+      "discountPercentage": 13.46,
       "thumbnail": "https://picsum.photos/200/200",
-      "stock": 36,
+      "stock": 38,
       "brand": "Samsung",
       "category": "smartphones",
       "id": "3"
@@ -418,31 +415,16 @@
       ]
     },
     {
-      "id": "30",
       "title": "Key Holder",
       "description": "Attractive DesignMetallic materialFour key hooksReliable & DurablePremium Quality",
-      "price": 30,
-      "discountPercentage": 2.92,
-      "rating": 4.92,
-      "stock": 54,
-      "brand": "Golden",
-      "category": "home-decoration",
+      "images": "https://cdn.dummyjson.com/product-images/30/1.jpg",
+      "price": 33,
+      "discountPercentage": 0.92,
       "thumbnail": "https://cdn.dummyjson.com/product-images/30/thumbnail.jpg",
-      "images": [
-        "https://cdn.dummyjson.com/product-images/30/1.jpg"
-      ]
-    },
-    {
-      "title": "bimbim",
-      "description": "tt",
-      "images": "https://picsum.photos/200/200",
-      "price": 200,
-      "discountPercentage": 4,
-      "thumbnail": "https://picsum.photos/200/200",
-      "stock": 4,
-      "brand": "bim him",
-      "category": "",
-      "id": "ZHrCm7N"
+      "stock": 56,
+      "brand": "Goldenn",
+      "category": "home-decoration",
+      "id": "30"
     }
   ],
   "carts": [
@@ -510,7 +492,7 @@
   "users": [
     {
       "email": "khanh526@gmail.com",
-      "password": "$2a$10$G03fKi6ugwcCwzaKxGEuFuwssmkVzgzJqEm.hkUIISBCdvNDi.fxW",
+      "password": "$2a$10$1oDUovSFqqq4288g.Z3Q3e3M42DlX54ksiq2TUsA8oDvVOSE6s8di",
       "id": 1
     }
   ]
